@@ -9,7 +9,7 @@
     "node": ">=10.x"
   },
   "scripts": {
-    "dev": "cd src && nodemon --exec ts-node index.ts -e ts,graphql"
+    "start": "cross-env NODE_ENV=development nodemon src/index.ts"
   },
   "devDependencies": {
     "@types/cors": "^2.8.9",
