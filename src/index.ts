@@ -1,18 +1,12 @@
-import { Options } from "graphql-yoga";
+import dotenv from "dotenv";
 import chalk from "chalk";
 import app from "./app";
 
-const PORT: number | string = process.env.PORT || 4000;
-const PLAYGROUND_ENDPOINT = "/playground";
-const GRAPHQL_ENDPOINT = "/graphql";
+dotenv.config();
 
-const appOptions: Options = {
-    "port": PORT,
-    "playground": PLAYGROUND_ENDPOINT,
-    "endpoint": GRAPHQL_ENDPOINT,
-};
+const { PORT } = process.env;
 
-const handleAppStat = () =>
-    console.log(chalk.green(`Listening on port ${PORT}`)); // eslint-disable-line no-console
+// eslint-disable-next-line no-console
+const handleAppStat = () => console.log(chalk.green(`Listening on port ${PORT}`));
 
-app.start(appOptions, handleAppStat);
+app.listen(PORT, handleAppStat);
