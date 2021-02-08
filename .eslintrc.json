@@ -21,7 +21,7 @@
       2,
       {
         "arrays": "never",
-        "objects": "always",
+        "objects": "only-multiline",
         "imports": "never",
         "exports": "never",
         "functions": "never"
