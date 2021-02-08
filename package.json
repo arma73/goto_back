@@ -14,6 +14,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.9",
     "@types/helmet": "^4.0.0",
+    "@types/lodash.merge": "^4.6.6",
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.25",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
@@ -31,6 +32,7 @@
     "cors": "^2.8.5",
     "graphql-yoga": "^1.18.3",
     "helmet": "^4.4.1",
+    "lodash.merge": "^4.6.2",
     "morgan": "^1.10.0"
   }
 }
