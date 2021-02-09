@@ -1,12 +1,14 @@
-import dotenv from "dotenv";
+import "./security/env";
 import chalk from "chalk";
-import app from "./app";
-
-dotenv.config();
+import server from "./server";
 
 const { PORT } = process.env;
 
 // eslint-disable-next-line no-console
 const handleAppStat = () => console.log(chalk.green(`Listening on port ${PORT}`));
 
-app.listen(PORT, handleAppStat);
+server.getConnectDB()
+    .then(() => {
+        server.getApp().listen(PORT, handleAppStat);
+    })
+    .catch(error => console.error(error)); // eslint-disable-line no-console

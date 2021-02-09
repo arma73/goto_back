@@ -1,11 +1,14 @@
 import express, { Application } from "express";
 import { ApolloServer } from "apollo-server-express";
+import { Connection } from "typeorm";
+import connectDB from "./db/connect";
 import cors from "cors";
 import helmet from "helmet";
 import logger from "morgan";
 import apolloConfig from "./apollo/config";
 
-class App {
+class Server {
+    private connectDB: Connection = connectDB;
     private app: Application = express();
 
     constructor() {
@@ -29,6 +32,10 @@ class App {
     public getApp(): Application {
         return this.app;
     }
+
+    public getConnectDB(): Promise<Connection> {
+        return this.connectDB.connect();
+    }
 }
 
-export default new App().getApp();
+export default new Server();
