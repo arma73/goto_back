@@ -4,7 +4,8 @@ import {
     Column,
     PrimaryGeneratedColumn,
     CreateDateColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    BeforeInsert
 } from "typeorm";
 import { VerifyTarget } from "../../types/enums";
 
@@ -30,6 +31,17 @@ class Verify extends BaseEntity {
 
     @UpdateDateColumn()
     updateAt: string;
+
+    @BeforeInsert()
+    createKey(): void {
+        if (this.target === VerifyTarget.PHONE) {
+            this.key = Math.floor(Math.random() * 100000).toString();
+        } else if (this.target === VerifyTarget.EMAIL) {
+            this.key = Math.random()
+                .toString(36)
+                .substr(2);
+        }
+    }
 }
 
 export default Verify;
