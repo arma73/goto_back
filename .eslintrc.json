@@ -133,17 +133,11 @@
     "no-delete-var": 2,
     "no-label-var": 2,
     "no-shadow-restricted-names": 2,
-    "no-shadow": 2,
+    "no-shadow": 0,
     "no-undef-init": 2,
     "no-undef": 2,
     "no-undefined": 0,
-    "no-unused-vars": [
-      2,
-      {
-        "vars": "all",
-        "args": "after-used"
-      }
-    ],
+    "no-unused-vars": "off",
     "no-use-before-define": 2,
     "handle-callback-err": 0,
     "no-mixed-requires": [
