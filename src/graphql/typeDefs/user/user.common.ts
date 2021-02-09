@@ -22,4 +22,8 @@ export const user = gql`
         createdAt: String!
         updatedAt: String
     }
+    
+    extend type Query {
+        user(id: ID!): User! 
+    }
 `;
