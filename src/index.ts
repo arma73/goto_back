@@ -1,8 +1,9 @@
 import "./security/env";
 import chalk from "chalk";
-import server from "./server";
+import Server from "./app/Server";
 
 const { PORT } = process.env;
+const server = new Server();
 
 // eslint-disable-next-line no-console
 const handleAppStat = () => console.log(chalk.green(`Listening on port ${PORT}`));

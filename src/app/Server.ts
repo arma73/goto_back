@@ -1,11 +1,11 @@
 import express, { Application } from "express";
 import { ApolloServer } from "apollo-server-express";
 import { Connection } from "typeorm";
-import connectDB from "./db/connect";
+import connectDB from "../db/connect";
 import cors from "cors";
 import helmet from "helmet";
 import logger from "morgan";
-import apolloConfig from "./apollo/config";
+import apolloConfig from "../apollo/config";
 
 class Server {
     private connectDB: Connection = connectDB;
@@ -16,7 +16,7 @@ class Server {
         this.initializeApolloServer();
     }
 
-    private initializeApolloServer() {
+    private initializeApolloServer(): void {
         const server = new ApolloServer(apolloConfig);
         server.applyMiddleware({ "app": this.app, "path": "/api" });
     }
@@ -38,4 +38,4 @@ class Server {
     }
 }
 
-export default new Server();
+export default Server;
