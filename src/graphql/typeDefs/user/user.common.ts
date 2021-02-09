@@ -19,6 +19,8 @@ export const user = gql`
         lastLng: Float
         lastLat: Float
         lastOrientation: Float
+        chat: Chat
+        messages: [Message]
         createdAt: String!
         updatedAt: String
     }

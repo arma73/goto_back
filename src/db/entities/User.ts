@@ -8,8 +8,12 @@ import {
     CreateDateColumn,
     UpdateDateColumn,
     BeforeInsert,
-    BeforeUpdate
+    BeforeUpdate,
+    ManyToOne,
+    OneToMany
 } from "typeorm";
+import Chat from "./Chat";
+import Message from "./Message";
 
 const BCRYPT_ROUNDS = 10;
 
@@ -70,13 +74,11 @@ class User extends BaseEntity {
     @UpdateDateColumn()
     updatedAt: string;
 
-    get fullName(): string {
-        return `${this.firstName} ${this.lastName}`;
-    }
+    @ManyToOne(type => Chat, chat => chat.participants)
+    chat: Chat;
 
-    public comparePassword(password: string): Promise<boolean> {
-        return bcrypt.compare(password, this.password);
-    }
+    @OneToMany(type => Message, message => message.user)
+    messages: Message[];
 
     @BeforeInsert()
     @BeforeUpdate()
@@ -85,6 +87,14 @@ class User extends BaseEntity {
             const hashedPassword = await this.hashPassword(this.password);
             this.password = hashedPassword;
         }
+    }
+
+    get fullName(): string {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    public comparePassword(password: string): Promise<boolean> {
+        return bcrypt.compare(password, this.password);
     }
 
     private hashPassword(password: string): Promise<string> {
