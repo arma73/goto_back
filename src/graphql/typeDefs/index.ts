@@ -1,4 +1,6 @@
-// import { gql } from "apollo-server-express";
-import temp from "./temp";
+import { DocumentNode } from "graphql";
+import { user } from "./user";
 
-export const typeDefs = [temp]
+export const typeDefs: DocumentNode[] = [
+    user
+];
