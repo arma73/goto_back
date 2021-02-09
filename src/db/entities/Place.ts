@@ -4,8 +4,7 @@ import {
     Column,
     PrimaryGeneratedColumn,
     CreateDateColumn,
-    UpdateDateColumn,
-    BeforeInsert
+    UpdateDateColumn
 } from "typeorm";
 
 @Entity()
