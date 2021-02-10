@@ -7,8 +7,9 @@ export const verify = gql`
         payload: String!
         key: String!
         used: Boolean!
+        user: User!
         createdAt: String!
-        updatedAt: String!
+        updatedAt: String
     }
 
     extend type Query {

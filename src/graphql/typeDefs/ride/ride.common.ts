@@ -17,6 +17,8 @@ export const ride = gql`
         price: Float!
         distance: String!
         duration: String!
+        driver: User!
+        passenger: User! 
         createdAt: String!
         updateAt: String
     }

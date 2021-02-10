@@ -21,6 +21,9 @@ export const user = gql`
         lastOrientation: Float
         chat: Chat
         messages: [Message]
+        verifications: [Verify]
+        ridesAsPassenger: [Ride]
+        ridesAsDriver: [Ride]
         createdAt: String!
         updatedAt: String
     }
