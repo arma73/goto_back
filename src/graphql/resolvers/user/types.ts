@@ -1,4 +1,10 @@
-export interface FaceboookConnectMutationInput {
+interface CoreResponse {
+    "success": boolean;
+    "error": string | null;
+    "token": string | null;
+}
+
+interface FaceboookConnectMutationInput {
     "firstName": string;
     "lastName": string;
     "email": string | null;
@@ -9,8 +15,15 @@ export interface FacebookConnectMutationArgs {
     "input": FaceboookConnectMutationInput;
 }
 
-export interface FacebookConnectResponse {
-    "success": boolean;
-    "error": string | null;
-    "token": string | null;
+export interface FacebookConnectResponse extends CoreResponse {}
+
+interface EmailSignInMutationInput {
+    "email": string;
+    "password": string;
 }
+
+export interface EmailSignInMutationArgs {
+    "input": EmailSignInMutationInput;
+}
+
+export interface EmailSignInResponse extends CoreResponse {}
