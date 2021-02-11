@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-express";
 
-const message = gql`
+export const message = gql`
     extend type Query {
         Message(id: ID!): Message!
     }
