@@ -69,6 +69,9 @@ class Server {
         return this.app;
     }
 
+    /**
+     * @throws {DataBaseConnectionError} - Unable to connect to database
+     */
     private async connectWithDB(): Promise<Connection> {
         const db = new DataBase();
         return db.connect();
