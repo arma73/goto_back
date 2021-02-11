@@ -7,7 +7,7 @@ import {
     UpdateDateColumn,
     ManyToOne
 } from "typeorm";
-import { RideStatus } from "../../types/enums";
+import { RideStatus } from "../types/enums";
 import User from "./User";
 
 @Entity()
@@ -36,7 +36,7 @@ class Ride extends BaseEntity {
     @Column({ "type": "double precision", "default": 0 })
     pickUpLng: number;
 
-    @Column({ "type": "string" })
+    @Column({ "type": "text" })
     dropOffAddress: string;
 
     @Column({ "type": "double precision", "default": 0 })
@@ -54,10 +54,10 @@ class Ride extends BaseEntity {
     @Column({ "type": "text" })
     duration: string;
 
-    @ManyToOne(type => User, user => user.ridesAsPassenger)
+    @ManyToOne(() => User, user => user.ridesAsPassenger)
     passenger: User;
 
-    @ManyToOne(type => User, user => user.ridesAsPassenger)
+    @ManyToOne(() => User, user => user.ridesAsPassenger)
     driver: User;
 
     @CreateDateColumn()

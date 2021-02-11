@@ -18,10 +18,10 @@ class Message extends BaseEntity {
     @Column({ "type": "text" })
     text: string;
 
-    @ManyToOne(type => Chat, chat => chat.messages)
+    @ManyToOne(() => Chat, chat => chat.messages)
     chat: Chat;
 
-    @ManyToOne(type => User, user => user.messages)
+    @ManyToOne(() => User, user => user.messages)
     user: User;
 
     @CreateDateColumn()

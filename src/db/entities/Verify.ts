@@ -8,7 +8,7 @@ import {
     ManyToOne,
     BeforeInsert
 } from "typeorm";
-import { VerifyTarget } from "../../types/enums";
+import { VerifyTarget } from "../types/enums";
 import User from "./User";
 
 @Entity()
@@ -28,7 +28,7 @@ class Verify extends BaseEntity {
     @Column({ "type": "boolean", "default": false })
     used: boolean;
 
-    @ManyToOne(type => User, user => user.verifications)
+    @ManyToOne(() => User, user => user.verifications)
     user: User;
 
     @CreateDateColumn()
