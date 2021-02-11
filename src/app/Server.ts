@@ -32,7 +32,7 @@ class Server {
             this.server = this.getApp()
                 .listen(this.port, this.handleStat);
         } catch (error) {
-            console.error(error);
+            console.error(chalk.red(error));
         }
     }
 
