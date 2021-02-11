@@ -19,6 +19,7 @@ export const user = gql`
         lastLng: Float
         lastLat: Float
         lastOrientation: Float
+        fbId: String
         chat: Chat
         messages: [Message]
         verifications: [Verify]
