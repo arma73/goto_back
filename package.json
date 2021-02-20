@@ -44,6 +44,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
+    "twilio": "^3.56.0",
     "typeorm": "^0.2.31"
   }
 }
