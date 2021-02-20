@@ -6,8 +6,6 @@ export const verify = gql`
         target: String!
         payload: String!
         key: String!
-        used: Boolean!
-        user: User!
         createdAt: String!
         updatedAt: String
     }
