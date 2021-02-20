@@ -1,6 +1,6 @@
 import { DocumentNode } from "graphql";
 import { root } from "./root";
-import { user, userConnectFB, userEmail } from "./user";
+import { user, userConnectFB, userEmail, userPhone } from "./user";
 import { chat, message } from "./chat";
 import { place } from "./place";
 import { ride } from "./ride";
@@ -11,6 +11,7 @@ export const typeDefs: DocumentNode[] = [
     user,
     userConnectFB,
     userEmail,
+    userPhone,
     chat,
     message,
     place,
