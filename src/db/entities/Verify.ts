@@ -5,11 +5,9 @@ import {
     PrimaryGeneratedColumn,
     CreateDateColumn,
     UpdateDateColumn,
-    ManyToOne,
     BeforeInsert
 } from "typeorm";
 import { VerifyTarget } from "../types/enums";
-import User from "./User";
 
 @Entity()
 class Verify extends BaseEntity {
@@ -24,12 +22,6 @@ class Verify extends BaseEntity {
 
     @Column({ "type": "text" })
     key: string;
-
-    @Column({ "type": "boolean", "default": false })
-    used: boolean;
-
-    @ManyToOne(() => User, user => user.verifications)
-    user: User;
 
     @CreateDateColumn()
     createdAt: string;
