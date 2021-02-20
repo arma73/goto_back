@@ -22,7 +22,6 @@ export const user = gql`
         fbId: String
         chat: Chat
         messages: [Message]
-        verifications: [Verify]
         ridesAsPassenger: [Ride]
         ridesAsDriver: [Ride]
         createdAt: String!
