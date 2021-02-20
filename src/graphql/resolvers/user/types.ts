@@ -27,3 +27,16 @@ export interface EmailSignInMutationArgs {
 }
 
 export interface EmailSignInResponse extends CoreResponse {}
+
+interface PhoneVerificationInput {
+    "phoneNumber": string;
+}
+
+export interface PhoneVerificationMutationArgs {
+    "input": PhoneVerificationInput;
+}
+
+export interface PhoneVerificationResponse {
+    "success": boolean;
+    "error": string | null;
+}

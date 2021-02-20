@@ -3,13 +3,21 @@ import {
     FacebookConnectMutationArgs,
     FacebookConnectResponse,
     EmailSignInMutationArgs,
-    EmailSignInResponse
+    EmailSignInResponse,
+    PhoneVerificationMutationArgs,
+    PhoneVerificationResponse
 } from "./types";
 import User from "../../../db/entities/User";
+import Verify from "../../../db/entities/Verify";
+import { VerifyTarget } from "../../../db/types/enums";
+import { sendVerificationMessage } from "../../../helpers/sendMessage";
 
 export const userMutation: IResolvers = {
     "Mutation": {
-        "facebookConnect": async (_root: undefined, { input }: FacebookConnectMutationArgs): Promise<FacebookConnectResponse> => {
+        "facebookConnect": async (
+            _root: undefined,
+            { input }: FacebookConnectMutationArgs
+        ): Promise<FacebookConnectResponse> => {
             const { email, fbId, firstName, lastName } = input;
             try {
                 const existingUser = await User.findOne({ "fbId": fbId });
@@ -82,5 +90,34 @@ export const userMutation: IResolvers = {
                 };
             }
         },
+        "phoneVerification": async (
+            _root: undefined,
+            { input }: PhoneVerificationMutationArgs
+        ): Promise<PhoneVerificationResponse> => {
+            const { phoneNumber } = input;
+            try {
+                const existingVerification = await Verify.findOne({ "payload": phoneNumber });
+                if (existingVerification) {
+                    existingVerification.remove();
+                }
+
+                const { payload, key } = await Verify.create({
+                    "payload": phoneNumber,
+                    "target": VerifyTarget.PHONE,
+                }).save();
+
+                await sendVerificationMessage(payload, key);
+
+                return {
+                    "success": true,
+                    "error": null,
+                };
+            } catch (error) {
+                return {
+                    "success": false,
+                    "error": error.message,
+                };
+            }
+        }
     },
 };
