@@ -1,3 +1,4 @@
+import { createJWT } from "../../../../helpers/createJWT";
 import User from "../../../../db/entities/User";
 import { EmailSignUpMutationArgs, EmailSignUpResponse } from "../types";
 
@@ -20,12 +21,13 @@ export const emailSignUp = async (
             };
         }
 
-        await User.create({ ...input }).save();
+        const createdUser = await User.create({ ...input }).save();
+        const token = createJWT(createdUser.id);
 
         return {
             "success": true,
             "error": null,
-            "token": "temp",
+            token,
         };
     } catch (error) {
         return {

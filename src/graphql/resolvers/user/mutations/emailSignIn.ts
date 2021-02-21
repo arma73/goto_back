@@ -3,6 +3,7 @@ import {
     EmailSignInResponse
 } from "../types";
 import User from "../../../../db/entities/User";
+import { createJWT } from "../../../../helpers/createJWT";
 
 export const emailSignIn = async (
     _root: undefined,
@@ -23,10 +24,11 @@ export const emailSignIn = async (
 
         const checkPassword = await user.comparePassword(password);
         if (checkPassword) {
+            const token = createJWT(user.id);
             return {
                 "success": true,
                 "error": null,
-                "token": "temp",
+                token,
             };
         }
 

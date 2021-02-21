@@ -3,35 +3,37 @@ import {
     FacebookConnectResponse
 } from "../types";
 import User from "../../../../db/entities/User";
+import { createJWT } from "../../../../helpers/createJWT";
 
 export const facebookConnect = async (
     _root: undefined,
     { input }: FacebookConnectMutationArgs
 ): Promise<FacebookConnectResponse> => {
-    const { email, fbId, firstName, lastName } = input;
+    const { fbId } = input;
     try {
         const existingUser = await User.findOne({ "fbId": fbId });
         if (existingUser) {
+            const token = createJWT(existingUser.id);
+
             return {
                 "success": true,
                 "error": null,
-                "token": "temp already",
+                token,
             };
         }
 
         const profilePhoto = `http://graph.facebook.com/${fbId}/picture?type=square`;
-        await User.create({
-            "email": email,
-            "fbId": fbId,
-            "firstName": firstName,
-            "lastName": lastName,
+        const createdUser = await User.create({
+            ...input,
             profilePhoto,
         }).save();
+
+        const token = createJWT(createdUser.id);
 
         return {
             "success": true,
             "error": null,
-            "token": "temp new",
+            token,
         };
     } catch (error) {
         return {

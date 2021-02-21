@@ -1,3 +1,4 @@
+import { createJWT } from "../../../../helpers/createJWT";
 import User from "../../../../db/entities/User";
 import Verify from "../../../../db/entities/Verify";
 import { CompletePhoneVerificationArgs, CompletePhoneVerificationResponse } from "../types";
@@ -29,11 +30,13 @@ export const completePhoneVerification = async (
 
         if (user) {
             user.verifiedPhoneNumber = true;
-            user.save();
+            await user.save();
+            const token = createJWT(user.id);
+
             return {
                 "success": true,
                 "error": null,
-                "token": "Temp",
+                token,
             };
         }
 
