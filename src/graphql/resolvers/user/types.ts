@@ -1,3 +1,5 @@
+import User from "../../../db/entities/User";
+
 interface CoreResponse {
     "success": boolean;
     "error": string | null;
@@ -67,3 +69,9 @@ export interface EmailSignUpMutationArgs {
 }
 
 export interface EmailSignUpResponse extends CoreResponse {}
+
+export interface GetMyProfileResponse {
+    "success": boolean;
+    "error": string | null;
+    "user": User | null;
+}
