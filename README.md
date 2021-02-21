@@ -13,7 +13,7 @@
 ### Authentication:
 
 - [x] Generate JWT
-- [ ] Verify JWT
+- [x] Verify JWT
 
 ---
 
