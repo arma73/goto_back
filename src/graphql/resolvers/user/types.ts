@@ -51,3 +51,19 @@ export interface CompletePhoneVerificationArgs {
 }
 
 export interface CompletePhoneVerificationResponse extends CoreResponse {}
+
+interface EmailSignUpInput {
+    "firstName": string;
+    "lastName": string;
+    "email": string;
+    "password": string;
+    "profilePhoto": string;
+    "age": number;
+    "phoneNumber": string;
+}
+
+export interface EmailSignUpMutationArgs {
+    "input": EmailSignUpInput;
+}
+
+export interface EmailSignUpResponse extends CoreResponse {}
