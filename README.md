@@ -6,7 +6,14 @@
 - [x] Sign In with Email
 - [x] Start Phone Number Verification
 - [x] Complete Phone Number Verification
-- [ ] Sign Up with Email
+- [x] Sign Up with Email
+
+---
+
+### Authentication:
+
+- [x] Generate JWT
+- [ ] Verify JWT
 
 ---
 
