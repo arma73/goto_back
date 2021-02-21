@@ -40,3 +40,14 @@ export interface PhoneVerificationResponse {
     "success": boolean;
     "error": string | null;
 }
+
+interface CompletePhoneVerificationInput {
+    "phoneNumber": string;
+    "key": string;
+}
+
+export interface CompletePhoneVerificationArgs {
+    "input": CompletePhoneVerificationInput;
+}
+
+export interface CompletePhoneVerificationResponse extends CoreResponse {}
