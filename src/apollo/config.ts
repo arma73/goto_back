@@ -5,7 +5,7 @@ import { typeDefs } from "../graphql/typeDefs";
 const config: ApolloServerExpressConfig = {
     resolvers,
     typeDefs,
-    "context": ({ req, res }) => ({ req, res }),
+    "context": ({ req }) => ({ "user": req.user }),
     "introspection": true,
 };
 
