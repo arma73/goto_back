@@ -18,7 +18,11 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "experimentalDecorators": true,
-        "emitDecoratorMetadata": true
+        "emitDecoratorMetadata": true,
+        "typeRoots": [
+            "./typings",
+            "./node_modules/@types",
+        ]
     },
     "exclude": [
         "node_modules",
