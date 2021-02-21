@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-express";
 
-export const user = gql`
+export const userCommon = gql`
     type User {
         id: Int!
         email: String
