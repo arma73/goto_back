@@ -6,7 +6,9 @@ export const userPhone = gql`
         error: String
     }
 
-    type CompletePhoneVerificationResponse implements PhoneVerificationResponse {
+    type CompletePhoneVerificationResponse {
+        success: Boolean!
+        error: String
         token: String
     }
 
@@ -14,14 +16,15 @@ export const userPhone = gql`
         phoneNumber: String!
     }
 
-    input CompletePhoneVerificationInput implements PhoneVerificationInput {
+    input CompletePhoneVerificationInput {
+        phoneNumber: String!
         key: String!
     }
 
     extend type Mutation {
         phoneVerification(input: PhoneVerificationInput!): PhoneVerificationResponse!
         completePhoneVerification(
-            input: CompletePhoneVerificationInput
-        ): CompletePhoneVerificationResponse
+            input: CompletePhoneVerificationInput!
+        ): CompletePhoneVerificationResponse!
     }
 `;
