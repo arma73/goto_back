@@ -1,7 +1,7 @@
 import "./security/env";
-import Server from "./app/Server";
+import App from "./app/App";
 
 const { PORT } = process.env;
-const server = new Server(PORT);
+const application = new App(PORT);
 
-server.start();
+application.start();
