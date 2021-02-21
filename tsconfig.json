@@ -1,4 +1,7 @@
 {
+    "ts-node": {
+        "files": true
+    },
     "compilerOptions": {
         "baseUrl": ".",
         "module": "CommonJS",
@@ -26,11 +29,10 @@
     },
     "exclude": [
         "node_modules",
-        "build",
-        "scripts",
-        "acceptance-tests",
-        "webpack",
-        "jest",
-        "src/setupTests.ts"
+        "dist",
+    ],
+    "include": [
+        "./src/",
+        "./typings"
     ]
 }
