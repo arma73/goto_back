@@ -71,6 +71,8 @@ class Server {
 
             if (user) {
                 req.user = user;
+            } else {
+                req.user = null;
             }
         }
 
