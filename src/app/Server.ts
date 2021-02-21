@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import express, { Application } from "express";
+import express, { Application, Request, Response, NextFunction } from "express";
 import { Server as HTTPServer } from "http";
 import { ApolloServer } from "apollo-server-express";
 import { Connection } from "typeorm";
@@ -11,6 +11,7 @@ import DataBase from "../db/DataBase";
 import apolloConfig from "../apollo/config";
 import { CloseServerError } from "../errors";
 import { TEnv } from "../types/custom";
+import { decodeJWT } from "../helpers/decodeJWT";
 
 class Server {
     private app: Application;
@@ -27,8 +28,8 @@ class Server {
     public start = async (): Promise<void> => {
         try {
             await this.connectWithDB();
-            this.initializeApolloServer();
             this.middlewars();
+            this.initializeApolloServer();
             this.server = this.getApp()
                 .listen(this.port, this.handleStat);
         } catch (error) {
@@ -59,7 +60,22 @@ class Server {
         this.app.use(helmet({
             "contentSecurityPolicy": process.env.NODE_ENV === "production" ? undefined : false,
         }));
-    };
+        this.app.use(this.jwt);
+    }
+
+    private jwt = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+        const token = req.get("X-JWT");
+
+        if (token) {
+            const user = await decodeJWT(token);
+
+            if (user) {
+                req.user = user;
+            }
+        }
+
+        next();
+    }
 
     private handleStat = (): void => {
         console.log(chalk.green(`Listening on port ${this.port}`));
