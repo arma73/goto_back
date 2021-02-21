@@ -1,5 +1,5 @@
-import User from "src/db/entities/User";
-import Verify from "src/db/entities/Verify";
+import User from "../../../../db/entities/User";
+import Verify from "../../../../db/entities/Verify";
 import { CompletePhoneVerificationArgs, CompletePhoneVerificationResponse } from "../types";
 
 export const completePhoneVerification = async (
