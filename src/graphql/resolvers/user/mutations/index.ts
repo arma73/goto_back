@@ -7,6 +7,7 @@ import { requestEmailVerification } from "./requestEmailVerification";
 import { completeEmailVerification } from "./completeEmailVerification";
 import { updateMyProfile } from "./updateMyProfile";
 import { toggleDrivingMode } from "./toggleDrivingMode";
+import { reportMovement } from "./reportMovement";
 
 export const userMutation = {
     "Mutation": {
@@ -19,5 +20,6 @@ export const userMutation = {
         requestEmailVerification,
         updateMyProfile,
         toggleDrivingMode,
+        reportMovement,
     },
 };
