@@ -8,9 +8,15 @@ export const updateMyProfile = privateResolver<UpdateMyProfileResponse>(async (
     { input }: UpdateMyProfileArgs,
     { user }
 ): Promise<UpdateMyProfileResponse> => {
+    const { password } = input;
     const partialEntity = filterToNotNullObject<UpdateMyProfileArgs["input"]>(input);
 
     try {
+        if (password) {
+            user.password = password;
+            await user.save();
+        }
+
         await User.update({ "id": user.id }, { ...partialEntity });
 
         return {
