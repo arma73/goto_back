@@ -1,17 +1,14 @@
 import { sendVerificationEmail } from "../../../../helpers/sendEmail";
-import { privateResolver } from "../../utils/resolverMiddleware";
+import { privateResolver } from "../../middlewares/privateResolver";
 import { RequestEmailVerificationResponse } from "../types";
 import { VerifyTarget } from "../../../../db/types/enums";
-import { ApolloContext } from "../../../../apollo/types";
 import Verify from "../../../../db/entities/Verify";
 
 export const requestEmailVerification = privateResolver<RequestEmailVerificationResponse>(async (
     _root: undefined,
     args: undefined,
-    context: ApolloContext
+    { user }
 ): Promise<RequestEmailVerificationResponse> => {
-    const { user } = context;
-
     if (!user?.email || user.verifiedEmail) {
         return {
             "success": false,
