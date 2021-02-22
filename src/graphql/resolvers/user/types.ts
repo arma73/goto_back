@@ -1,15 +1,21 @@
 import User from "../../../db/entities/User";
+import { AllowNull } from "../../../types/custom";
+
+interface BaseCoreResponse {
+    "success": boolean;
+    "error": AllowNull<string>;
+}
 
 interface CoreResponse {
     "success": boolean;
-    "error": string | null;
-    "token": string | null;
+    "error": AllowNull<string>;
+    "token": AllowNull<string>;
 }
 
 interface FaceboookConnectMutationInput {
     "firstName": string;
     "lastName": string;
-    "email": string | null;
+    "email": AllowNull<string>;
     "fbId": string;
 }
 
@@ -38,10 +44,7 @@ export interface PhoneVerificationMutationArgs {
     "input": PhoneVerificationInput;
 }
 
-export interface PhoneVerificationResponse {
-    "success": boolean;
-    "error": string | null;
-}
+export interface PhoneVerificationResponse extends BaseCoreResponse {}
 
 interface CompletePhoneVerificationInput {
     "phoneNumber": string;
@@ -70,10 +73,8 @@ export interface EmailSignUpMutationArgs {
 
 export interface EmailSignUpResponse extends CoreResponse {}
 
-export interface GetMyProfileResponse {
-    "success": boolean;
-    "error": string | null;
-    "user": User | null;
+export interface GetMyProfileResponse extends BaseCoreResponse {
+    "user": AllowNull<User>;
 }
 
 interface CompleteEmailVerificationInput {
@@ -84,12 +85,6 @@ export interface CompleteEmailVerificationArgs {
     "input": CompleteEmailVerificationInput;
 }
 
-export interface CompleteEmailVerificationResponse {
-    "success": boolean;
-    "error": string | null;
-}
+export interface CompleteEmailVerificationResponse extends BaseCoreResponse {}
 
-export interface RequestEmailVerificationResponse {
-    "success": boolean;
-    "error": string | null;
-}
+export interface RequestEmailVerificationResponse extends BaseCoreResponse {}
