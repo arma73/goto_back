@@ -75,3 +75,8 @@ export interface GetMyProfileResponse {
     "error": string | null;
     "user": User | null;
 }
+
+export interface RequestEmailVerificationResponse {
+    "success": boolean;
+    "error": string | null;
+}
