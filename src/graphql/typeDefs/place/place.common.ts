@@ -1,6 +1,6 @@
 import { gql } from "apollo-server-express";
 
-export const place = gql`
+export const placeCommon = gql`
     extend type Query {
         place(id: ID!): Place!
     }
@@ -12,6 +12,7 @@ export const place = gql`
         lng: Float!
         address: String!
         isFav: Boolean!
+        user: User!
         createdAt: String!
         updatedAt: String
     }
