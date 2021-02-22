@@ -52,7 +52,7 @@ class User extends BaseEntity {
     profilePhoto: string;
 
     @Column({ "type": "boolean", "default": false })
-    idDriving: boolean;
+    isDriving: boolean;
 
     @Column({ "type": "boolean", "default": false })
     isRiding: boolean;
