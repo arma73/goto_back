@@ -12,14 +12,14 @@ export const requestEmailVerification = privateResolver<RequestEmailVerification
 ): Promise<RequestEmailVerificationResponse> => {
     const { user } = context;
 
-    try {
-        if (!user?.email) {
-            return {
-                "success": false,
-                "error": "Your user has no email to verify",
-            };
-        }
+    if (!user?.email || user.verifiedEmail) {
+        return {
+            "success": false,
+            "error": "Your user has no email to verify",
+        };
+    }
 
+    try {
         const oldVerification = await Verify.findOne({ "payload": user.email });
 
         if (oldVerification) {
