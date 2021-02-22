@@ -13,6 +13,11 @@ export const userEmail = gql`
         token: String
     }
 
+    type RequestEmailVerificationResponse {
+        success: Boolean!
+        error: String
+    }
+
     input EmailSignInInput {
         email: String!
         password: String!
@@ -30,6 +35,7 @@ export const userEmail = gql`
 
     extend type Mutation {
         emailSignIn(input: EmailSignInInput!): EmailSignInResponse!
-        emailSignUp(input: EmailSignUpInput!): EmailSignUpResponse! 
+        emailSignUp(input: EmailSignUpInput!): EmailSignUpResponse!
+        requestEmailVerification: RequestEmailVerificationResponse!
     }
 `;
