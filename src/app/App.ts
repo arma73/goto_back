@@ -60,7 +60,7 @@ class App extends Server {
         next();
     }
 
-    protected initializeApolloServer = (): void => {
+    private initializeApolloServer = (): void => {
         const server = new ApolloServer(apolloConfig);
         server.applyMiddleware({ "app": this.app, "path": this.graphqlPath });
     }
