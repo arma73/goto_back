@@ -103,3 +103,5 @@ export interface UpdateMyProfileArgs {
 }
 
 export interface UpdateMyProfileResponse extends BaseCoreResponse {}
+
+export interface ToggleDrivingModeResponse extends BaseCoreResponse {}
