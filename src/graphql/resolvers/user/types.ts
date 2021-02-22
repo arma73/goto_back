@@ -1,16 +1,6 @@
 import User from "../../../db/entities/User";
+import { BaseCoreResponse, CoreResponse } from "../types";
 import { AllowNull } from "../../../types/custom";
-
-interface BaseCoreResponse {
-    "success": boolean;
-    "error": AllowNull<string>;
-}
-
-interface CoreResponse {
-    "success": boolean;
-    "error": AllowNull<string>;
-    "token": AllowNull<string>;
-}
 
 interface FaceboookConnectMutationInput {
     "firstName": string;
