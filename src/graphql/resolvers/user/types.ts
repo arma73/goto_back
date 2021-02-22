@@ -76,6 +76,19 @@ export interface GetMyProfileResponse {
     "user": User | null;
 }
 
+interface CompleteEmailVerificationInput {
+    "key": string;
+}
+
+export interface CompleteEmailVerificationArgs {
+    "input": CompleteEmailVerificationInput;
+}
+
+export interface CompleteEmailVerificationResponse {
+    "success": boolean;
+    "error": string | null;
+}
+
 export interface RequestEmailVerificationResponse {
     "success": boolean;
     "error": string | null;
