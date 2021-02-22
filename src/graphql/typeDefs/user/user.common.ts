@@ -24,6 +24,7 @@ export const userCommon = gql`
         messages: [Message]
         ridesAsPassenger: [Ride]
         ridesAsDriver: [Ride]
+        places: [Place] 
         createdAt: String!
         updatedAt: String
     }
