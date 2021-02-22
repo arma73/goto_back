@@ -13,6 +13,11 @@ export const userEmail = gql`
         token: String
     }
 
+    type CompleteEmailVerificationResponse {
+        success: Boolean!
+        error: String
+    }
+
     type RequestEmailVerificationResponse {
         success: Boolean!
         error: String
@@ -33,9 +38,16 @@ export const userEmail = gql`
         phoneNumber: String!
     }
 
+    input CompleteEmailVerificationInput {
+        key: String!
+    }
+
     extend type Mutation {
         emailSignIn(input: EmailSignInInput!): EmailSignInResponse!
         emailSignUp(input: EmailSignUpInput!): EmailSignUpResponse!
+        completeEmailVerification(
+            input: CompleteEmailVerificationInput
+        ): CompleteEmailVerificationResponse!
         requestEmailVerification: RequestEmailVerificationResponse!
     }
 `;
