@@ -6,7 +6,19 @@ export const userDriving = gql`
         error: String
     }
 
+    type ReportMovementResponse {
+        success: Boolean!
+        error: String
+    }
+
+    input ReportMovementInput {
+        lastOrientation: Float!
+        lastLat: Float
+        lastLng: Float
+    }
+
     extend type Mutation {
         toggleDrivingMode: ToggleDrivingModeResponse!
+        reportMovement(input: ReportMovementInput!): ReportMovementResponse!
     } 
 `;
