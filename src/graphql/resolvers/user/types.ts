@@ -88,3 +88,18 @@ export interface CompleteEmailVerificationArgs {
 export interface CompleteEmailVerificationResponse extends BaseCoreResponse {}
 
 export interface RequestEmailVerificationResponse extends BaseCoreResponse {}
+
+interface UpdateMyProfileInput {
+    "firstName": AllowNull<string>;
+    "lastName": AllowNull<string>;
+    "email": AllowNull<string>;
+    "password": AllowNull<string>;
+    "profilePhoto": AllowNull<string>;
+    "age": AllowNull<number>;
+}
+
+export interface UpdateMyProfileArgs {
+    "input": UpdateMyProfileInput;
+}
+
+export interface UpdateMyProfileResponse extends BaseCoreResponse {}
