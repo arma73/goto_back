@@ -1,4 +1,4 @@
-import User from "src/db/entities/User";
+import User from "../../../../db/entities/User";
 import { privateResolver } from "../../middlewares/privateResolver";
 import { filterToNotNullObject } from "../../../../utils/filterNulls";
 import { UpdateMyProfileArgs, UpdateMyProfileResponse } from "../types";
