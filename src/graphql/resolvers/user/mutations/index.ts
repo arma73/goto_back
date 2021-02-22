@@ -3,6 +3,7 @@ import { emailSignIn } from "./emailSignIn";
 import { phoneVerification } from "./phoneVerification";
 import { completePhoneVerification } from "./completePhoneVerification";
 import { emailSignUp } from "./emailSignUp";
+import { requestEmailVerification } from "./requestEmailVerification";
 
 export const userMutation = {
     "Mutation": {
@@ -11,5 +12,6 @@ export const userMutation = {
         phoneVerification,
         completePhoneVerification,
         emailSignUp,
+        requestEmailVerification,
     },
 };
