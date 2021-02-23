@@ -12,6 +12,7 @@ export const placeCommon = gql`
         lng: Float!
         address: String!
         isFav: Boolean!
+        userId: Int!
         user: User!
         createdAt: String!
         updatedAt: String
