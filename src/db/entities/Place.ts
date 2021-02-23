@@ -29,6 +29,9 @@ class Place extends BaseEntity {
     @Column({ "type": "boolean", "default": false })
     isFav: boolean;
 
+    @Column({ "type": "int", "nullable": true })
+    userId: number;
+
     @ManyToOne(() => User, user => user.places)
     user: User;
 
