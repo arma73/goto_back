@@ -11,6 +11,11 @@ export const placeAction = gql`
         error: String
     }
 
+    type DeletePlaceResponse {
+        success: Boolean!
+        error: String
+    }
+
     input AddPlaceInput {
         name: String!
         lat: Float!
@@ -25,8 +30,13 @@ export const placeAction = gql`
         isFav: Boolean
     }
 
+    input DeletePlaceInput {
+        placeId: Int!
+    }
+
     extend type Mutation {
         addPlace(input: AddPlaceInput!): AddPlaceResponse!
         editPlace(input: EditPlaceInput!): EditPlaceResponse!
+        deletePlace(input: DeletePlaceInput!): DeletePlaceResponse!
     }
 `;
