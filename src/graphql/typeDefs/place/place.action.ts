@@ -16,6 +16,12 @@ export const placeAction = gql`
         error: String
     }
 
+    type GetMyPlacesResponse {
+        success: Boolean!
+        error: String
+        places: [Place]
+    }
+
     input AddPlaceInput {
         name: String!
         lat: Float!
@@ -32,6 +38,10 @@ export const placeAction = gql`
 
     input DeletePlaceInput {
         placeId: Int!
+    }
+
+    extend type Query {
+        getMyPlaces: GetMyPlacesResponse
     }
 
     extend type Mutation {

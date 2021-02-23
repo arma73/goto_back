@@ -1,3 +1,7 @@
+import { getMyPlaces } from "./getMyPlaces";
+
 export const placeQuery = {
-    "Query": {},
+    "Query": {
+        getMyPlaces,
+    },
 };
