@@ -107,3 +107,7 @@ export interface ReportMovementArgs {
 }
 
 export interface ReportMovementResponse extends BaseCoreResponse {}
+
+export interface GetNearbyDriversResponse extends BaseCoreResponse {
+    "drivers": User[] | null;
+}
