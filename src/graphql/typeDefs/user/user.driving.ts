@@ -11,10 +11,20 @@ export const userDriving = gql`
         error: String
     }
 
+    type GetNearbyDriversResponse {
+        success: Boolean!
+        error: String
+        drivers: [User]
+    }
+
     input ReportMovementInput {
         lastOrientation: Float!
         lastLat: Float
         lastLng: Float
+    }
+
+    extend type Query {
+        getNearbyDrivers: GetNearbyDriversResponse
     }
 
     extend type Mutation {
