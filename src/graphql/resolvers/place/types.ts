@@ -26,3 +26,13 @@ export interface EditPlaceArgs {
 }
 
 export interface EditPlaceResponse extends BaseCoreResponse {}
+
+interface DeletePlaceInput {
+    "placeId": number;
+}
+
+export interface DeletePlaceArgs {
+    "input": DeletePlaceInput;
+}
+
+export interface DeletePlaceResponse extends BaseCoreResponse {}
