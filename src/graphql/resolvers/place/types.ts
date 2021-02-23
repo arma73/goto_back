@@ -1,3 +1,4 @@
+import Place from "../../../db/entities/Place";
 import { AllowNull } from "../../../types/custom";
 import { BaseCoreResponse } from "../types";
 
@@ -36,3 +37,7 @@ export interface DeletePlaceArgs {
 }
 
 export interface DeletePlaceResponse extends BaseCoreResponse {}
+
+export interface GetMyPlacesResponse extends BaseCoreResponse {
+    "places": Place[] | null;
+}
