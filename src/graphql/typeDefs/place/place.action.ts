@@ -6,6 +6,11 @@ export const placeAction = gql`
         error: String
     }
 
+    type EditPlaceResponse {
+        success: Boolean!
+        error: String
+    }
+
     input AddPlaceInput {
         name: String!
         lat: Float!
@@ -14,7 +19,14 @@ export const placeAction = gql`
         isFav: Boolean!
     }
 
+    input EditPlaceInput {
+        placeId: Int!
+        name: String
+        isFav: Boolean
+    }
+
     extend type Mutation {
-        addPlace(input: AddPlaceInput!): AddPlaceResponse! 
+        addPlace(input: AddPlaceInput!): AddPlaceResponse!
+        editPlace(input: EditPlaceInput!): EditPlaceResponse!
     }
 `;
